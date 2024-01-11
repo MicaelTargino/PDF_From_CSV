@@ -7,13 +7,18 @@ It will be a event for Kids, so, the teachers needed some information that my sc
 -  List of kid's who has allergy to some types of foods
 -  a frequency pdf to keep track how many days each kid went to the event
 
-# What I learned
+## What I learned
 
 - CSV reading
 - Pandas DataFrames
 - Data cleaning
 - Data visualization with Matpotlib
 
-# Conclusion 
+## Technologies used
+![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
+![Pandas](https://img.shields.io/badge/Pandas-2C2D72?style=for-the-badge&logo=pandas&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-0052FF?style=for-the-badge&logoColor=white)
+
+## Conclusion 
 It was challenging, but I enhanced my skill's in data management.
 
