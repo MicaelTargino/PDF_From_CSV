@@ -7,14 +7,17 @@ def custom_age_groups(age):
     if len(age) > 2:
         age = age[:2]
     age = float(age)
-    if age <= 5:
-        return "3-5 anos"
+    if 1 <= age <= 3:
+        return "1-3 anos (berçário)"
+    elif 4 <= age <= 5:
+        return "4-5 anos"
     elif 6 <= age <= 7:
         return "6-7 anos"
     elif 8 <= age <= 9:
         return "8-9 anos"
     elif 10 <= age:
         return "10-12 anos"
+
 
 
 def export_to_pdf_by_custom_age_groups(file_path):

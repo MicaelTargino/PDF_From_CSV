@@ -2,13 +2,16 @@ import pandas as pd
 import numpy as np
 import matplotlib.backends.backend_pdf
 import matplotlib.pyplot as plt
+from openpyxl.styles import Font
 
 def custom_age_groups(age):
     if len(age) > 2:
         age = age[:2]
     age = float(age)
-    if age <= 5:
-        return "3-5 anos"
+    if 1 <= age <= 3:
+        return "1-3 anos (berçário)"
+    elif 4 <= age <= 5:
+        return "4-5 anos"
     elif 6 <= age <= 7:
         return "6-7 anos"
     elif 8 <= age <= 9:
@@ -48,7 +51,8 @@ def export_to_pdf_by_custom_age_groups(file_path):
 
 
 
-            colWidths = [0.25, 0.15, 0.15, 0.15]
+            colWidths = [0.40, 0.10, 0.10, 0.10]
+            big_font = Font(size=14)
 
             # Add a title to the table
             title = f'Crianças na faixa etária de {age_group}'
@@ -64,6 +68,12 @@ def export_to_pdf_by_custom_age_groups(file_path):
             table.auto_set_font_size(False)
             table.set_fontsize(8)
             table.scale(3, 3) 
+
+            larger_font_size = 12
+            for (i, j), cell in table.get_celld().items():
+                if j == 0:  # Column 0 is the first column
+                    cell.set_fontsize(larger_font_size)
+
 
             # Remove axis
             plt.axis('off')

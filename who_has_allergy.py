@@ -30,6 +30,8 @@ def export_to_pdf_by_custom_age_groups(file_path, output_pdf_path):
 
         filtered_df = filtered_df[filtered_df['Nome'] != 'Rafael Mousinho']
 
+        filtered_df.reset_index(drop=True, inplace=True)
+
         # Create a figure and axis
         fig, ax = plt.subplots(figsize=(8, 4))
 
@@ -37,18 +39,24 @@ def export_to_pdf_by_custom_age_groups(file_path, output_pdf_path):
 
         # Define the column widths
         # Set a smaller width for the 'Idade' column, which is the second column
-        column_widths = [0.35] * num_columns
-        column_widths[1] = 0.15 
-        print(column_widths)
+        column_widths = [0.40] * num_columns
+        column_widths[1] = 0.10 
+        # print(column_widths)
         
         # Create a table plot
+        ax.axis('tight')
         ax.axis('off')
-        tbl = table(ax, filtered_df, loc='center', colWidths=column_widths)
+
+        tbl = plt.table(cellText=filtered_df.values, colLabels=filtered_df.columns, loc='center', colWidths=column_widths)
+
+        # tbl = table(ax ,cellText=filtered_df.values, colLabels=filtered_df.columns, loc='center', colWidths=column_widths)
         tbl.auto_set_font_size(False)
         tbl.set_fontsize(8)
 
         # Add a title
-        plt.title("Crianças com alergia/Intolerância", fontsize=12)
+        plt.title("Crianças com alergia/Intolerância", fontsize=12, pad=20)
+
+        plt.axis('off')
 
         # Save the plot as a PDF
         plt.savefig(output_pdf_path, bbox_inches='tight')
